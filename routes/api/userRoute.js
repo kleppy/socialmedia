@@ -1,17 +1,16 @@
-
+// router
 const router = require('express').Router();
+// methods allowed 
 const {
-  getUsers,
-  getSingleUser,
+  allUsers,
+  singleUser,
   updateUser,
-  createUser,
-  addFriend,
-  deleteUser,
-  deleteFriend
+  newUser,
+  newFriend,
+  removeUser,
+  removeFriend
 } = require('../../controllers/userController');
-
-router.route('/').get(getUsers).post(createUser);
-
-// single 
-router.route('/:userId').get(getSingleUser).put(updateUser).delete(deleteUser);
-router.route('/:userId/friends/:friendId').post(addFriend).delete(deleteFriend);
+// define route new and all user 
+router.route('/').get(allUsers).post(newUser);
+router.route('/:userId').get(singleUser).put(updateUser).delete(removeUser);
+router.route('/:userId/friends/:friendId').post(newFriend).delete(removeFriend);
